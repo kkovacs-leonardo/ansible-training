@@ -1,0 +1,47 @@
+---
+
+- name: Setup RedHat Repositories
+  hosts: all
+  roles:
+   - { role: repo-config }
+  tags:
+    - setup-repos
+    - tested
+
+
+- name: Setup HAProxy
+  hosts: frontends
+  roles:
+   - { role: haproxy-server }
+  tags:
+    - setup-haproxy
+    - tested
+
+
+
+
+- name: Setup HTTP and Tomcat
+  hosts: apps
+  roles:
+   - { role: http-tomcat }
+
+
+
+
+- name: Setup application1 
+  hosts: apps1
+  roles:
+   - { role: application1 }
+
+
+- name: Setup application2 
+  hosts: apps2
+  roles:
+   - { role: application2 }
+
+
+
+- name: Setup postgresql
+  hosts: appsdb
+  roles:
+   - { role: postgresql }
