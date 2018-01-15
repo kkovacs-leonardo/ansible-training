@@ -12,7 +12,7 @@
 - name: Setup HAProxy
   hosts: frontends
   roles:
-   - { role: haproxy-server }
+   - { role: haproxy }
   tags:
     - setup-haproxy
     - tested
