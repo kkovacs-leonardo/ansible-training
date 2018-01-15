@@ -43,14 +43,10 @@ frontend {{ haproxy_frontend_name }}
     mode {{ haproxy_frontend_mode }}
     default_backend {{ haproxy_backend_name }}
 
-backend {{ haproxy_backend_name }}
-    mode {{ haproxy_backend_mode }}
-    balance {{ haproxy_backend_balance_method }}
+
+backend app-servers
+    mode http
+    balance roundrobin
     option forwardfor
-{% if haproxy_backend_httpchk != '' %}
-    option httpchk {{ haproxy_backend_httpchk }}
-{% endif %}
-    cookie SERVERID insert indirect
-{% for backend in haproxy_backend_servers %}
-    server {{ backend.name }} {{ backend.address }} cookie {{ backend.name }} check
-{% endfor %}
+    server app1 app1.{{GUID}}.internal:8080 cookie app1 check
+    server app2 app2.{{GUID}}.internal:8080 cookie app2 check

@@ -6,8 +6,6 @@
    - { role: repo-config }
   tags:
     - setup-repos
-    - tested
-
 
 - name: Setup HAProxy
   hosts: frontends
@@ -15,33 +13,27 @@
    - { role: haproxy }
   tags:
     - setup-haproxy
-    - tested
-
-
-
 
 - name: Setup HTTP and Tomcat
   hosts: apps
   roles:
    - { role: http-tomcat }
-
-
-
+  tags:
+    - setup-tomcat
 
 - name: Setup application1 
   hosts: apps1
   roles:
    - { role: application1 }
 
-
 - name: Setup application2 
   hosts: apps2
   roles:
    - { role: application2 }
 
-
-
 - name: Setup postgresql
   hosts: appsdb
   roles:
    - { role: postgresql }
+  tags:
+    - setup-postgresql
