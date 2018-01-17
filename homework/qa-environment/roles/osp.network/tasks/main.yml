@@ -1,0 +1,46 @@
+---
+# tasks file for osp.network
+
+# Create the networks
+- name: Configuration of Public and Private Networks
+  os_network:
+    cloud: "{{ item.value.cloud_name }}"
+    state: "{{ item.value.state }}"
+    name: "{{ item.value.network_name }}"
+    external: "{{ item.value.external }}"
+  with_dict:
+   - "{{ osp_networks }}"
+
+
+- name: Configuration of Subnets for Public and Private SubNets
+  os_subnet:
+    cloud: "{{ item.0.cloud_name }}"
+    state: "{{ item.0.state }}"
+    network_name: "{{ item.0.network_name  }}"
+    name: "{{ item.0.subnet_name  }}"
+    cidr: "{{ item.0.cidr_network }}"
+    dns_nameservers: "{{ item.1 }}"
+    host_routes: "{{ item.2 }}"
+  with_subelements:
+   - "{{ osp_networks }}"
+   - dns_nameservers
+   - host_routes
+
+# Create a router to connect between the private networks and your internal physical network.
+
+- os_router:
+    cloud: "{{ item.0.value.cloud_name }}"
+    state: "{{ item.0.value.state }}"
+    name: "{{ item.0.value.name }}"
+    network: "{{ item.0.value.network }}"
+    external_fixed_ips: "{{ item.1 }}"
+    interfaces: "{{ item.2 }}"
+  with_subelements:
+   - "{{ osp_router }}"
+   - external_fixed_ips
+   - interfaces
+
+
+
+
+
