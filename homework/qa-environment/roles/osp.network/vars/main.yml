@@ -6,38 +6,25 @@ osp_networks:
     cloud_name: osp_cloud
     network_name: ext_network
     subnet_name: ext_subnet
-    cidr_network: 10.10.10.0/24
+    cidr_network: "10.10.10.0/24"
     state: present
     external: true
-    dns_nameservers:
-      - 8.8.8.7
-      - 8.8.8.8
-    host_routes:
-       - { destination: 0.0.0.0/0, nexthop: 12.34.56.78 }
-       - { destination: 192.168.0.0/24, nexthop: 192.168.0.1}
+
 
   # Private Facing Network   
   internal:
     cloud_name: osp_cloud
     network_name: int_network
     subnet_name: int_subnet
-    cidr_network: 20.20.20.0/24
+    cidr_network: "20.20.20.0/24"
+    state: present
     external: false
-    dns_nameservers:
-      - 8.8.8.7
-      - 8.8.8.8
-    host_routes:
-       - { destination: 0.0.0.0/0, nexthop: 12.34.56.78 }
-       - { destination: 192.168.0.0/24, nexthop: 192.168.0.1}
 
   # Public Facing Router connecting the two networks
 osp_router:
+  router:
     cloud_name: osp_cloud
     state: present
     name: router
     network: ext_network
-    external_fixed_ips:
-      - { subnet: ext_subnet }
-    interfaces:
-      - int_subnet
 

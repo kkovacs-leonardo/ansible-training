@@ -4,7 +4,7 @@
   roles:
      - osp.network
      - osp.keypair
+     - osp.security
      - osp.flavor
      - osp.servers
-     - osp.security
  

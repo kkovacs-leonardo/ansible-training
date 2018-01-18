@@ -9,12 +9,7 @@ osp_servers:
     flavor: m2.small
     security_group: apps
     meta:
-      - group: apps
-      - deployment_name: QA
-    nic_network:
-      - net-name: int_network
-
-
+      - { group: apps, deployment_name: QA}
   app2:
     name: app2
     state: present
@@ -25,9 +20,6 @@ osp_servers:
     meta:
       - group: apps
       - deployment_name: QA
-    nic_network:
-      - net-name: int_network
-
   db:
     name: db
     state: present
@@ -38,9 +30,6 @@ osp_servers:
     meta:
       - group: appdbs
       - deployment_name: QA
-    nic_network:
-      - net-name: int_network
-
   frontend:
     name: frontend
     state: present
@@ -49,7 +38,4 @@ osp_servers:
     flavor: m2.small
     security_group: apps
     meta:
-      - group: frontend
-      - deployment_name: QA
-    nic_network:
-      - net-name: int_network
+      - { group: frontend, deployment_name: QA}

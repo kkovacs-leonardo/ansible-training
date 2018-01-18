@@ -19,7 +19,8 @@ os_flavors_auth: {}
 # - 'is_public': Whether the flavor is public.
 # - 'extra_specs': Dict of Nova flavor metadata, optional.
 os_flavors: 
-  name : m2.small
-  ram: 2048
-  disk: 10
-  vcpus: 1
+    cloud_name: osp_cloud
+    name : m2.small
+    ram: 2048
+    disk: 10
+    vcpus: 1
