@@ -19,9 +19,9 @@ haproxy_backend_httpchk: 'HEAD / HTTP/1.1\r\nHost:localhost'
 # List of backend servers.
 haproxy_backend_servers:
   - name: app1
-    address: app1.{{GUID}}.internal:8080 
+    address: "{{inventory_hostname}}:8080"
   - name: app2
-    address: app2.{{GUID}}.internal:8080 
+    address: "{{inventory_hostname}}:8080"
 
 # Extra global vars (see README for example usage).
 haproxy_global_vars: []
