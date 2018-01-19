@@ -1,0 +1,27 @@
+---
+# tasks file for check
+- name: OpenStack servers
+  os_server_facts:
+    cloud: osp_cloud
+  register: openstack_servers
+  tags:
+    - smokeTest
+
+# - name: Print records  
+#   debug:
+#     var: item.name
+#   with_items: 
+#   - "{{ openstack_servers}}"
+#   tags:
+#     - smokeTest
+
+
+# - name: Get Front End result
+#   uri:
+#     url: http://marathon.service.consul:8080/v2/apps/
+#     method: GET
+#     body_format: json
+#     headers:
+#       Content-Type: "application/json"
+#     tags:
+#     - smokeTest
