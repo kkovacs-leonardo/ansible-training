@@ -3,4 +3,4 @@
   - name: Install App1
     template:
       src: index.html.app1
-      dest: /usr/share/tomcat/webapps/ansible/index.html
+      dest: "{{tomcat_web_root}}/index.html"
