@@ -3,6 +3,6 @@
 - name: Clean up 3teir on OSP
   hosts: jumpbox
   roles:
-   - { role: cleaner }
+    - { role: ../../roles/cleaner }
   tags:
     - clean
