@@ -2,7 +2,7 @@
 # Use Jumpbox to provision OpenStack
 - hosts: jumpbox
   roles:
-     - { role: osp.network} 
+     - { role: ../../roles/osp.network} 
      - { role: osp.keypair } 
      - osp.security
      - osp.flavor
