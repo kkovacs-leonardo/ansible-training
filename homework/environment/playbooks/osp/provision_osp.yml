@@ -3,7 +3,7 @@
 - hosts: jumpbox
   roles:
      - { role: ../../roles/osp.network} 
-     - { role: osp.keypair } 
-     - osp.security
-     - osp.flavor
-     - osp.servers
+     - { role: ../../roles/osp.keypair } 
+     - { role: ../../roles/osp.security }
+     - { role: ../../roles/osp.flavor }
+     - { role: ../../roles/osp.servers }
