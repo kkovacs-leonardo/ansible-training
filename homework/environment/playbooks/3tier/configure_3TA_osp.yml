@@ -1,6 +1,5 @@
 ---
-#(Include smoke test task)
----
+#(Include smoke test task
 - name: Configure 3teir on OSP
   hosts: jumpbox
   roles:
