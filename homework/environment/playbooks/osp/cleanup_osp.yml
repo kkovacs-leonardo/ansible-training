@@ -2,4 +2,4 @@
 # destroy OSP instances and floating ip
 - hosts: jumpbox
   roles:
-     - {{role: '../roles/osp.cleanup'}} 
+     - {role: '../roles/osp.cleanup'}
