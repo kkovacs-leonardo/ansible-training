@@ -7,7 +7,6 @@
   tags:
     - smokeTest
 
-
 - name: Curl website
   uri:
     url: "http://{{item.accessIPv4}}"
